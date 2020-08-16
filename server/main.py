@@ -1,3 +1,4 @@
+import time
 from flask import Flask
 
 app = Flask("__main__")
@@ -6,3 +7,6 @@ app = Flask("__main__")
 def root():
   return 'Sanity check!'
 
+@app.route("/current-time")
+def get_timestamp():
+  return {'time': time.time()}
