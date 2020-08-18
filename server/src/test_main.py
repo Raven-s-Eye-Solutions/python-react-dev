@@ -1,11 +1,10 @@
 import unittest
-import json
-import main
-main.app.testing = True
+from main import app
+app.testing = True
 
 class TestApi(unittest.TestCase):
     def test_main(self):
-        with main.app.test_client() as client:
+        with app.test_client() as client:
             result = client.get(
                 '/'
             )
@@ -13,3 +12,6 @@ class TestApi(unittest.TestCase):
                 result.data,
                 b'Sanity check!'
             )
+
+if __name__ == '__main__':
+   unittest.main()
