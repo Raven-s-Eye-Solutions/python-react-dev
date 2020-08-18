@@ -5,8 +5,8 @@
   "main": "./server/main.py",
   "scripts": {
     "test": "yarn run test:server && yarn test:server:coverage && yarn run test:client",
-    "test:server": "coverage run --branch --source=./server/src --omit=./server/src/test_*.py -m unittest discover -s ./server/src",
-    "test:server:coverage": "coverage html -d coverage_reports --fail-under=20",
+    "test:server": "pipenv run coverage run --branch --source=./server/src --omit=./server/src/test_*.py -m unittest discover -s ./server/src",
+    "test:server:coverage": "pipenv run coverage html -d coverage_reports --fail-under=20",
     "test:client": "cd client && yarn test",
     "dev:start:server": "pipenv run flask run --no-debugger",
     "dev:start:client": "cd client && yarn start",
