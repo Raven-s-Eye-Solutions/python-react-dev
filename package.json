@@ -4,14 +4,15 @@
   "description": "A starting point boilerplate full stack project built with Python, Flask, and Create-React-App.",
   "main": "./server/main.py",
   "scripts": {
-    "test": "yarn run test:server && yarn test:server:coverage && yarn run test:client",
+    "test": "yarn run clean:reports && yarn run test:server && yarn test:server:coverage && yarn run test:client",
     "test:server": "pipenv run coverage run --branch --source=./server/src --omit=./server/src/test_*.py -m unittest discover -s ./server/src",
     "test:server:coverage": "pipenv run coverage html -d coverage_reports --fail-under=20",
-    "test:client": "cd client && yarn test",
+    "test:client": "cd client && yarn test:coverage",
     "dev:start:server": "pipenv run flask run --no-debugger",
     "dev:start:client": "cd client && yarn start",
     "dev:start": "concurrently \"yarn run dev:start:server\" \"yarn run dev:start:client\"",
-    "install": "concurrently \"cd client && yarn\" \"pipenv install\""
+    "install": "concurrently \"cd client && yarn\" \"pipenv install\"",
+    "clean:reports": "rm -rf ./client/coverage && rm -rf ./coverage_reports"
   },
   "repository": {
     "type": "git",
